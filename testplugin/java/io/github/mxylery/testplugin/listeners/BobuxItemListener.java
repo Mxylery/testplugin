@@ -19,11 +19,14 @@ import org.bukkit.util.Vector;
 import io.github.mxylery.testplugin.*;
 import io.github.mxylery.testplugin.blueprints.BobuxItems;
 import io.github.mxylery.testplugin.tasks.abilities.RailgunShootAbility;
+import io.github.mxylery.testplugin.tasks.abilities.TeleportRodAbility;
 
 public final class BobuxItemListener implements Listener {
 	
 	private RailgunShootAbility railgunAbil = new RailgunShootAbility(100);
-	private ItemStack railgunStack = (ItemStack) BobuxItems.getRailgun();
+	private TeleportRodAbility teleportRodAbil = new TeleportRodAbility(200);
+	private ItemStack railgunStack = BobuxItems.getRailgun().getStack();
+	private ItemStack teleportRodStack = BobuxItems.getTeleportWand().getStack();
 	
 	public BobuxItemListener(TestPlugin plugin) {
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
@@ -38,19 +41,17 @@ public final class BobuxItemListener implements Listener {
 			
 			ItemStack item = e.getPlayer().getInventory().getItemInMainHand();
 			
-			player.getServer().broadcastMessage("Beep!");
-			
-			railgunAbil.setPlayer(player);
-			
-			AbilityManager.useAbility(player, railgunAbil);
-			
 			if ( item.equals(railgunStack) ) {
 			
 				railgunAbil.setPlayer(player);
 			
-				player.getServer().broadcastMessage("Boop!");
-			
 				AbilityManager.useAbility(player, railgunAbil);
+				
+			} else if ( item.equals(teleportRodStack) ) {
+				
+				teleportRodAbil.setPlayer(player);
+				
+				AbilityManager.useAbility(player, teleportRodAbil);
 				
 			}
 			

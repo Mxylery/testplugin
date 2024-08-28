@@ -29,7 +29,7 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("This is the currency for the Bobux SMP");
+		lore.add("§r§7This is the currency for the Bobux SMP");
 		meta.setDisplayName("Bobux");
 		meta.setLore(lore);
 		
@@ -46,7 +46,7 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("Click here to check the rotating shop! (rotates every in-game day)");
+		lore.add("§r§7Click here to check the rotating shop! (rotates every in-game day)");
 		meta.setDisplayName("Daily Shop");
 		meta.setLore(lore);
 		
@@ -63,7 +63,7 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("Click here to check the shop! (everyday goods)");
+		lore.add("§r§7Click here to check the shop! (everyday goods)");
 		meta.setDisplayName("Shop");
 		meta.setLore(lore);
 		
@@ -79,7 +79,7 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("Click here to access Bobux Bounties...");
+		lore.add("§r§7Click here to access Bobux Bounties...");
 		meta.setDisplayName("Bounties");
 		meta.setLore(lore);
 		
@@ -120,7 +120,7 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("The Chestplate for the Berserker set.");
+		lore.add("§r§7The Chestplate for the Berserker set.");
 		meta.setDisplayName("Berserker Chestplate");
 		meta.setLore(lore);
 		
@@ -139,7 +139,7 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("The Leggings for the Berserker set.");
+		lore.add("§r§7The Leggings for the Berserker set.");
 		meta.setDisplayName("Berserker Leggings");
 		meta.setLore(lore);
 		
@@ -158,7 +158,7 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("The Boots for the Berserker set.");
+		lore.add("§r§7The Boots for the Berserker set.");
 		meta.setDisplayName("Berserker Boots");
 		meta.setLore(lore);
 		
@@ -177,7 +177,7 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("A very powerful railgun... (Deals 10 Damage with a 40 Block Range)");
+		lore.add("§r§7A very powerful railgun... \n10 DMG\n5s CD\n40 Block Range");
 		meta.setDisplayName("Railgun");
 		meta.setUnbreakable(true);
 		meta.setLore(lore);
@@ -190,6 +190,26 @@ public class BobuxItems {
 		return item;
 		
 	} 
+	
+	public static ShopItem getTeleportWand() {
+		
+		ItemStack stack = new ItemStack(Material.END_ROD);
+		ItemMeta meta = (ItemMeta) stack.getItemMeta();
+		List<String> lore = new ArrayList<>();
+		
+		lore.add("§r§7A wand that teleports you forward 8 blocks... use this wisely.\n10s CD");
+		meta.setDisplayName("Railgun");
+		meta.setUnbreakable(true);
+		meta.setLore(lore);
+		
+		stack.setItemMeta(meta);
+		
+		int price = 16;
+		ShopItem item = new ShopItem(stack, price);
+		
+		return item;
+		
+	}
 	
 }
 

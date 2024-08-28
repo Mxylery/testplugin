@@ -21,7 +21,7 @@ public class GenerateMarketTask extends BukkitRunnable {
 	private final JavaPlugin plugin;
 	private static Inventory shop;
 	private static HashMap<ItemStack, ShopItem> buttonItemMap = new HashMap<ItemStack, ShopItem>();
-	private final int ITEMS = 5;
+	private final int ITEMS = 6;
 	
 	public GenerateMarketTask(JavaPlugin plugin, Inventory inventory) {
 		this.plugin = plugin;
@@ -51,6 +51,8 @@ public class GenerateMarketTask extends BukkitRunnable {
 					break;	
 					case 4: item = BobuxItems.getRailgun();
 					break;	
+					case 5: item = BobuxItems.getTeleportWand();
+					break;
 				} 
 			} 
 			while (arrayList.contains(rng));
