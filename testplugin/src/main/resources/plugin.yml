@@ -1,0 +1,29 @@
+name: TestPlugin
+main: io.github.mxylery.testplugin.TestPlugin
+version: '1.0.0'
+api-version: 1.20
+commands:
+   bobuxshop:
+      description: This is bobux shop.
+      aliases: bobuxshop
+      usage: "/<command>"
+   bobuxbank:
+      description: This is bobux bank.
+      aliases: bobuxbank
+      usage: "/<command>"
+   bobuxadd:
+      description: This is bobux add.
+      aliases: bobuxadd
+      usage: "/<command>"
+   bobuxdeposit:
+      description: This is bobux deposit.
+      aliases: bobuxdeposit
+      usage: "/<command>"
+   bobuxwithdraw:
+      description: This is bobux withdraw.
+      aliases: bobuxwithdraw
+      usage: "/<command>"
+   bobuxremovesteak:
+      description: This is bobux REMOVE STEAK.
+      aliases: bobuxremovesteak
+      usage: "/<command>"
