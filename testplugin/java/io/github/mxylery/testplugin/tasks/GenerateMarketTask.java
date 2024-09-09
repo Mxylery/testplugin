@@ -21,22 +21,26 @@ public class GenerateMarketTask extends BukkitRunnable {
 	private final JavaPlugin plugin;
 	private static Inventory shop;
 	private static HashMap<ItemStack, ShopItem> buttonItemMap = new HashMap<ItemStack, ShopItem>();
-	private final int ITEMS = 6;
+	private final int ITEMS = 8;
 	
 	public GenerateMarketTask(JavaPlugin plugin, Inventory inventory) {
 		this.plugin = plugin;
 		shop = inventory;
 	}
 	
+	//This tasks runs every 20 minutes (24000 ticks)
 	@Override
 	public void run() {
 		
-		buttonItemMap.clear();
-		plugin.getServer().broadcastMessage("There are new items in the market!");
 		ArrayList<Integer> arrayList = new ArrayList<>();
 		int rng;
+		
+		buttonItemMap.clear();
 		arrayList.clear();
 		
+		plugin.getServer().broadcastMessage("There are new items in the market!");
+		
+		//Goes through the items randomly and picks 3 (the arraylist makes sure no dupes are added)
 		for (int i = 0; i < 3; i++) {
 			do {
 				rng = (int) (Math.random()*ITEMS);
@@ -51,7 +55,11 @@ public class GenerateMarketTask extends BukkitRunnable {
 					break;	
 					case 4: item = BobuxItems.getRailgun();
 					break;	
-					case 5: item = BobuxItems.getTeleportWand();
+					case 5: item = BobuxItems.getTeleportRod();
+					break;
+					case 6: item = BobuxItems.getMeteorWand();
+					break;
+					case 7: item = BobuxItems.getKatana();
 					break;
 				} 
 			} 

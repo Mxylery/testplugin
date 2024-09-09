@@ -191,20 +191,64 @@ public class BobuxItems {
 		
 	} 
 	
-	public static ShopItem getTeleportWand() {
+	public static ShopItem getTeleportRod() {
 		
 		ItemStack stack = new ItemStack(Material.END_ROD);
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("§r§7A wand that teleports you forward 8 blocks... use this wisely.\n10s CD");
-		meta.setDisplayName("Railgun");
+		lore.add("§r§7A rod that teleports you forward 12 blocks...");
+		lore.add("use this wisely. (Right click)");
+		lore.add("§r§73s CD");
+		meta.setDisplayName("Teleport Rod");
 		meta.setUnbreakable(true);
 		meta.setLore(lore);
 		
 		stack.setItemMeta(meta);
 		
 		int price = 16;
+		ShopItem item = new ShopItem(stack, price);
+		
+		return item;
+		
+	}
+	
+	public static ShopItem getMeteorWand() {
+		
+		ItemStack stack = new ItemStack(Material.BLAZE_ROD);
+		ItemMeta meta = (ItemMeta) stack.getItemMeta();
+		List<String> lore = new ArrayList<>();
+		
+		lore.add("§r§7A wand that summons a fireball from the sky.");
+		lore.add("§r§715s CD");
+		meta.setDisplayName("Meteor Wand");
+		meta.setUnbreakable(true);
+		meta.setLore(lore);
+		
+		stack.setItemMeta(meta);
+		
+		int price = 30;
+		ShopItem item = new ShopItem(stack, price);
+		
+		return item;
+		
+	}
+	
+	public static ShopItem getKatana() {
+		
+		ItemStack stack = new ItemStack(Material.IRON_SWORD);
+		ItemMeta meta = (ItemMeta) stack.getItemMeta();
+		List<String> lore = new ArrayList<>();
+		
+		lore.add("§r§7Harness the power of the katana...");
+		lore.add("§r§730s CD");
+		meta.setDisplayName("Katana");
+		meta.setUnbreakable(true);
+		meta.setLore(lore);
+		
+		stack.setItemMeta(meta);
+		
+		int price = 50;
 		ShopItem item = new ShopItem(stack, price);
 		
 		return item;

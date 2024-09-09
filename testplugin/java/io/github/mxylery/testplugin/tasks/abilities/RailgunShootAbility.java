@@ -9,6 +9,7 @@ import org.bukkit.Sound;
 import org.bukkit.Particle.DustOptions;
 import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
 import io.github.mxylery.testplugin.BobuxUtils;

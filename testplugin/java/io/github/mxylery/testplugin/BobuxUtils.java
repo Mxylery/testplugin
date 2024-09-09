@@ -5,9 +5,11 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.Particle.DustOptions;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -54,7 +56,38 @@ public class BobuxUtils {
 		
 		}
 		
-		return coord;
+		return coord;	
+		
+	}
+	
+	public static Location pseudoRaycast(Player player, Double dist) {
+		
+		Location blockLoc = BobuxUtils.getPlayerEyeCoordinate(player, 0.0);
+		boolean inBlock = false;
+		
+		//Checks in steps of 0.5 blocks to detect if the block being teleported to has a block there
+		for (double i = 0.5; i < dist + 0.5 && inBlock == false; i += 0.5) {
+			
+			blockLoc = BobuxUtils.getPlayerEyeCoordinate(player, i);
+			blockLoc.add(0.0, 1.0, 0.0);
+
+			if (!blockLoc.getBlock().getType().equals(Material.AIR) && !blockLoc.getBlock().getType().equals(Material.WATER) && !blockLoc.getBlock().getType().equals(Material.SNOW) && !blockLoc.getBlock().getType().equals(Material.LAVA)) {
+				
+				blockLoc.add(0.0, -1.0, 0.0);
+				blockLoc = BobuxUtils.getPlayerEyeCoordinate(player, i - 0.5);
+				inBlock = true;	
+				
+			} 
+			
+			if (i >= dist - 0.5) {
+				
+				blockLoc = BobuxUtils.getPlayerEyeCoordinate(player, dist);
+				
+			}
+			
+		}
+		
+		return blockLoc;
 		
 	}
 	
@@ -147,7 +180,8 @@ public class BobuxUtils {
 			ArrayList<Integer> arrayList = new ArrayList<Integer>();
 			arrayList.clear();
 			indexAmountMap.clear();
-		
+			
+			//Gets all indices of items in an arraylist and also puts them in a hash map
 			for (int i = 0; i < 36; i++) {
 				if (intStackMap.containsKey(i)) {
 					indexAmountMap.put(i, inventory.getItem(i).getAmount());
@@ -155,6 +189,7 @@ public class BobuxUtils {
 				}
 			}
 			
+			//Sorts the indices in the arraylist from least stacks to most stacks using the hash map for help
 			if (arrayList.size() > 1) {
 				for (int h = 0; h < arrayList.size() - 1; h++) {
 					for (int j = 0; j < arrayList.size() - 1; j++) {
@@ -173,19 +208,17 @@ public class BobuxUtils {
 				}
 			}
 			
-			//lastIntISwear is the array list index, which itself leads from the INVENTORY index with the least to most items.
-			
+			//This while loop goes through the ordered inventory indices from lowest amount to highest amount and stops when it hits 
 			while (totalToRemove > 0) {
 			
+				//ArrayList index to check
 				lastIntISwear++;
+				
+				
 				lastIndex = arrayList.get(lastIntISwear);
 				stackAmount = indexAmountMap.get(lastIndex);
 				
-				player.getServer().broadcastMessage("ArrayList index: " + lastIntISwear + "    Inventory index: " + lastIndex + "     Stack Amount: " + stackAmount);
-				
 				totalToRemove -= stackAmount;
-				
-				player.getServer().broadcastMessage("Total to Remove:" + totalToRemove);
 				
 				if (totalToRemove > 0) {
 					inventory.setItem(lastIndex, new ItemStack(Material.AIR));

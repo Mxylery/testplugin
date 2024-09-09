@@ -33,7 +33,6 @@ public final class TestPlugin extends JavaPlugin {
 	private static HashMap<String, Object> bobuxMap = new HashMap<String, Object>();
 	
 	private static HashMap<Player, Inventory> playerInventoryMap = new HashMap<Player, Inventory>();
-	private static HashMap<Inventory, Bounty[]> inventoryBountyMap = new HashMap<Inventory, Bounty[]>();
 	
 	private AbilityManagerCounterTask aMCT = new AbilityManagerCounterTask(this);
 	private GenerateMarketTask generateMarketTask = new GenerateMarketTask(this, market);
@@ -60,6 +59,7 @@ public final class TestPlugin extends JavaPlugin {
     	this.getCommand("bobuxdeposit").setExecutor(new BallsCommandExecutor(this));
     	this.getCommand("bobuxremovesteak").setExecutor(new BallsCommandExecutor(this));
     	
+    	//Server-wide constant tasks
     	generateMarketTask.runTaskTimer(this, 0, 1200);
     	generateShopTask.run();
     	generateBountiesTask.runTaskTimer(this, 300, 1200);
@@ -94,10 +94,6 @@ public final class TestPlugin extends JavaPlugin {
     
     public static HashMap<Player, Inventory> getPlayerInventoryMap() {
     	return GenerateBountiesTask.getPlayerInventoryMap();
-    }
-    
-    public static HashMap<Inventory, Bounty[]> getInventoryBountyMap() {
-    	return GenerateBountiesTask.getInventoryBountyMap();
     }
     
 }

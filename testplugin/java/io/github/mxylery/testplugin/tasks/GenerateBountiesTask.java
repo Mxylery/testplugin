@@ -20,50 +20,45 @@ import io.github.mxylery.testplugin.blueprints.Bounty;
 
 public class GenerateBountiesTask extends BukkitRunnable {
 
-	private ArrayList<Bounty> bountyList = new ArrayList<Bounty>();
 	private static HashMap<Inventory, Bounty[]> inventoryBountyMap = new HashMap<Inventory, Bounty[]>();
 	private static HashMap<Player, Inventory> playerInventoryMap = new HashMap<Player, Inventory>();
+	
+	private ArrayList<Bounty> bountyList = new ArrayList<Bounty>();
 	private ArrayList<Player> playerList = new ArrayList<Player>();
 	private JavaPlugin plugin;
 	
-	
-	
 	public GenerateBountiesTask(JavaPlugin plugin, HashMap<Player, Inventory> hashMap) {
-		
 		this.plugin = plugin;
-		
 	}
 	
+	//This task runs every 20 minutes (24000 ticks) 
 	@Override
 	public void run() {
 		
+		//Clears every list to make sure there are no leftovers from the last bounties
 		bountyList.clear();
 		playerInventoryMap.clear();
 		inventoryBountyMap.clear();
 		
 		this.recheckPlayers(plugin.getServer().getOnlinePlayers());
 		
+		//Goes through each player and assigns them an array of 3 bounties and maps them to the seperate maps.
 		for (int i = 0; i < playerList.size(); i++) {
 			
 			Player player = playerList.get(i);
 			Inventory inventory = Bukkit.createInventory(player, 27, "Bobux Bounties");
 			Bounty bounty;
-			int amount;
 			
 			for (int j = 0; j < 3; j++) {
 				
 				bounty = new Bounty();
-				amount = bounty.getBobux();
-				
 				bountyList.add(bounty);
-				
-				player.getServer().broadcastMessage("Bounty #" + (j + 1) + " created! This one gives " + amount + " bobux.");
 				
 			}
 			
-			playerInventoryMap.put(player, inventory);
 			Bounty[] bounties = {bountyList.get(0), bountyList.get(1), bountyList.get(2)};
 			bountyList.clear();
+			playerInventoryMap.put(player, inventory);
 			inventoryBountyMap.put(inventory, bounties);
 			
 			}

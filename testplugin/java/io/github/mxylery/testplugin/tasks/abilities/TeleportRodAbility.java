@@ -1,8 +1,13 @@
 package io.github.mxylery.testplugin.tasks.abilities;
 
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
+import org.bukkit.Particle.DustOptions;
 import org.bukkit.block.Block;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
 import io.github.mxylery.testplugin.BobuxUtils;
@@ -17,27 +22,15 @@ public class TeleportRodAbility extends BobuxAbility {
 	@Override
 	public void run() {
 		
-		Vector playerEyeVector = player.getEyeLocation().getDirection();
+		Location blockLoc = BobuxUtils.pseudoRaycast(player, 12.0);
 		
-		Location playerLoc = player.getLocation();
+		player.getWorld().spawnParticle(Particle.REDSTONE, player.getLocation(), 5, 0.5, 0.5, 0.5, 0.0, new DustOptions(Color.PURPLE, 2.0f));
 		
-		Location blockLoc;
+		player.teleport(blockLoc);
 		
-		boolean inBlock = true;
+		player.getWorld().spawnParticle(Particle.REDSTONE, player.getLocation(), 5, 0.5, 0.5, 0.5, 0.0, new DustOptions(Color.PURPLE, 2.0f));
 		
-		for (double i = 8.0; i > 0.0 && inBlock == true; i -= 0.5) {
-			
-			blockLoc = BobuxUtils.getPlayerEyeCoordinate(player, i);
-			
-			if (blockLoc.getBlock().getType().equals(Material.AIR)) {
-				
-				player.teleport(blockLoc);
-				
-				inBlock = false;
-				
-			} 
-			
-		}
+		player.playSound(player, Sound.ENTITY_ENDERMAN_TELEPORT, 0.5f, 0.5f);
 		
 	}
 	
