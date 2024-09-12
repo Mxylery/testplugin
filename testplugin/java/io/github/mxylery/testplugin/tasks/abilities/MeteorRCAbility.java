@@ -11,9 +11,9 @@ import org.bukkit.util.Vector;
 import io.github.mxylery.testplugin.BobuxUtils;
 import io.github.mxylery.testplugin.blueprints.BobuxAbility;
 
-public class MeteorWandAbility extends BobuxAbility {
+public class MeteorRCAbility extends BobuxAbility {
 
-	public MeteorWandAbility(int cooldown) {
+	public MeteorRCAbility(int cooldown) {
 		super(cooldown);
 	}
 

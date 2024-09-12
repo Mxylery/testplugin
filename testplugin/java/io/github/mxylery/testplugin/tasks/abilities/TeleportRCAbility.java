@@ -13,9 +13,9 @@ import org.bukkit.util.Vector;
 import io.github.mxylery.testplugin.BobuxUtils;
 import io.github.mxylery.testplugin.blueprints.BobuxAbility;
 
-public class TeleportRodAbility extends BobuxAbility {
+public class TeleportRCAbility extends BobuxAbility {
 	
-	public TeleportRodAbility(int cooldown) {
+	public TeleportRCAbility(int cooldown) {
 		super(cooldown);
 	}
 
@@ -26,10 +26,13 @@ public class TeleportRodAbility extends BobuxAbility {
 		
 		player.getWorld().spawnParticle(Particle.REDSTONE, player.getLocation(), 5, 0.5, 0.5, 0.5, 0.0, new DustOptions(Color.PURPLE, 2.0f));
 		
+		if (BobuxUtils.getLocationDifferenceMagnitude(blockLoc, player.getLocation()) < 11.5) {
+			blockLoc.add(0.0, 1.5, 0.0);
+		}
+		
 		player.teleport(blockLoc);
 		
 		player.getWorld().spawnParticle(Particle.REDSTONE, player.getLocation(), 5, 0.5, 0.5, 0.5, 0.0, new DustOptions(Color.PURPLE, 2.0f));
-		
 		player.playSound(player, Sound.ENTITY_ENDERMAN_TELEPORT, 0.5f, 0.5f);
 		
 	}

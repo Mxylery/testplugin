@@ -4,12 +4,15 @@ import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Particle.DustOptions;
+import org.bukkit.block.Block;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -97,6 +100,45 @@ public class BobuxUtils {
 		Vector result = new Vector(loc2.getX() - loc1.getX(), loc2.getY() - loc1.getY(), loc2.getZ() - loc1.getZ());
 		
 		return result;
+		
+	}
+	
+	public static Double getLocationDifferenceMagnitude(Location loc1, Location loc2) {
+		
+		double result = Math.sqrt(loc2.getX() - loc1.getX() + loc2.getY() - loc1.getY() + loc2.getZ() - loc1.getZ());
+		
+		return result;
+		
+	}
+	
+	public static ArrayList<Block> getNearbyBlocks(Location centerBlockLoc, int x, int y, int z) {
+		
+		Block[][][] blocks = new Block[x][y][z];
+		
+		ArrayList<Block> blockList = new ArrayList<Block>();
+		
+		Block block = centerBlockLoc.getBlock();
+		
+		Location loc;
+		
+		for (int i = 0; i < x; i++) {
+			
+			for (int j = 0; j < y; j++) {
+				
+				for (int h = 0; h < z; h++) {
+				
+					loc = block.getLocation();
+					loc.add(2 - i, 2 - j, 2 - h);
+					
+					blocks[i][j][h] = loc.getBlock();
+					
+					blockList.add(blocks[i][j][h]);
+					
+					}
+				}	
+			}
+		
+		return blockList;
 		
 	}
 	

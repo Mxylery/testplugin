@@ -17,33 +17,27 @@ import org.bukkit.util.Vector;
 
 import io.github.mxylery.testplugin.BobuxUtils;
 import io.github.mxylery.testplugin.blueprints.BobuxAbility;
+import io.github.mxylery.testplugin.blueprints.BobuxRepeatedAbility;
 
-public class KatanaDashAbility extends BobuxAbility {
+public class KatanaRCAbility extends BobuxRepeatedAbility {
 
 	private ArrayList<Mob> mobList = new ArrayList<Mob>();
-	private long repsToBeDone;
-	private BukkitScheduler scheduler;
 	
-	public KatanaDashAbility(long cooldown, long delay, long reps) {
+	public KatanaRCAbility(long cooldown, long delay, long reps) {
 		super(cooldown, delay, reps);
 		repsToBeDone = reps;
 	}
 
 	@Override
+	//Must use super.run() method for repetitions to work.
 	public void run() {
 		
-		scheduler = player.getServer().getScheduler();
-		
-		if (repsToBeDone == reps) {
-			for (int i = 0; i < reps; i++) {
-				scheduler.runTaskLater(plugin, this, i*delay);
-			}
-		}
+		super.run();
 		
 		Vector playerEyeVector = player.getEyeLocation().getDirection();
 		playerEyeVector.add(new Vector(0.0, 0.1, 0.0));
 		
-		if (repsToBeDone > 0) {
+		if (repsToBeDone > 1) {
 		
 			player.setVelocity(playerEyeVector);
 			List<Entity> list;
@@ -78,6 +72,7 @@ public class KatanaDashAbility extends BobuxAbility {
 				mobList.clear();
 			} 
 
+			player.getWorld().playSound(player, Sound.ENTITY_PLAYER_ATTACK_SWEEP, 1.5f, 0.5f) ;
 			repsToBeDone = reps;
 			
 		}

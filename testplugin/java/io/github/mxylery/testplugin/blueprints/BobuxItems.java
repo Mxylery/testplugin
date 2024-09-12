@@ -101,7 +101,7 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("The Helmet for the Berserker set.");
+		lore.add("§r§7The helmet for the Berserker set.");
 		meta.setDisplayName("Berserker Helmet");
 		meta.setLore(lore);
 		
@@ -139,7 +139,7 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("§r§7The Leggings for the Berserker set.");
+		lore.add("§r§7The leggings for the Berserker set.");
 		meta.setDisplayName("Berserker Leggings");
 		meta.setLore(lore);
 		
@@ -158,7 +158,7 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("§r§7The Boots for the Berserker set.");
+		lore.add("§r§7The boots for the Berserker set.");
 		meta.setDisplayName("Berserker Boots");
 		meta.setLore(lore);
 		
@@ -197,9 +197,8 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("§r§7A rod that teleports you forward 12 blocks...");
-		lore.add("use this wisely. (Right click)");
-		lore.add("§r§73s CD");
+		lore.add("§r§7A rod that teleports you forward 12 blocks.");
+		lore.add("§r§63s CD (Right Click)");
 		meta.setDisplayName("Teleport Rod");
 		meta.setUnbreakable(true);
 		meta.setLore(lore);
@@ -220,7 +219,7 @@ public class BobuxItems {
 		List<String> lore = new ArrayList<>();
 		
 		lore.add("§r§7A wand that summons a fireball from the sky.");
-		lore.add("§r§715s CD");
+		lore.add("§r§615s CD (Right Click)");
 		meta.setDisplayName("Meteor Wand");
 		meta.setUnbreakable(true);
 		meta.setLore(lore);
@@ -240,9 +239,56 @@ public class BobuxItems {
 		ItemMeta meta = (ItemMeta) stack.getItemMeta();
 		List<String> lore = new ArrayList<>();
 		
-		lore.add("§r§7Harness the power of the katana...");
-		lore.add("§r§730s CD");
+		lore.add("§r§7A katana that lets you harness");
+		lore.add("§r§7the powers and techniques used by");
+		lore.add("§r§7ninjas worldwide...");
+		lore.add("§r§630s CD (Right Click)");
 		meta.setDisplayName("Katana");
+		meta.setUnbreakable(true);
+		meta.setLore(lore);
+		
+		stack.setItemMeta(meta);
+		
+		int price = 50;
+		ShopItem item = new ShopItem(stack, price);
+		
+		return item;
+		
+	}
+	
+	public static ShopItem getExcavator() {
+		
+		ItemStack stack = new ItemStack(Material.GOLDEN_SHOVEL);
+		ItemMeta meta = (ItemMeta) stack.getItemMeta();
+		List<String> lore = new ArrayList<>();
+		
+		lore.add("§r§7The excavator allows you to break");
+		lore.add("§r§7and gather blocks in a 3x3x3 cube");
+		lore.add("§r§7wherever you click (collected blocks");
+		lore.add("§r§7must be of iron-level toughness.)");
+		lore.add("§r§65s CD (Right Click on Block)");
+		meta.setDisplayName("Katana");
+		meta.setUnbreakable(true);
+		meta.setLore(lore);
+		
+		stack.setItemMeta(meta);
+		
+		int price = 30;
+		ShopItem item = new ShopItem(stack, price);
+		
+		return item;
+		
+	}
+	
+	public static ShopItem getMolemanShovel() {
+		
+		ItemStack stack = new ItemStack(Material.DIAMOND_SHOVEL);
+		ItemMeta meta = (ItemMeta) stack.getItemMeta();
+		List<String> lore = new ArrayList<>();
+		
+		lore.add("§r§7mole dig");
+		lore.add("§r§65s CD (Right Click)");
+		meta.setDisplayName("Moleman's Shovel");
 		meta.setUnbreakable(true);
 		meta.setLore(lore);
 		

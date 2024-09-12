@@ -58,6 +58,7 @@ public final class TestPlugin extends JavaPlugin {
     	this.getCommand("bobuxwithdraw").setExecutor(new BallsCommandExecutor(this));
     	this.getCommand("bobuxdeposit").setExecutor(new BallsCommandExecutor(this));
     	this.getCommand("bobuxremovesteak").setExecutor(new BallsCommandExecutor(this));
+    	this.getCommand("bobuxgive").setExecutor(new BallsCommandExecutor(this));
     	
     	//Server-wide constant tasks
     	generateMarketTask.runTaskTimer(this, 0, 1200);

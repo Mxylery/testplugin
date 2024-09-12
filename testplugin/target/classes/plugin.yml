@@ -27,3 +27,7 @@ commands:
       description: This is bobux REMOVE STEAK.
       aliases: bobuxremovesteak
       usage: "/<command>"
+   bobuxgive:
+      description: This is bobux give command.
+      aliases: bobuxgive
+      usage: "/<command> <string>"

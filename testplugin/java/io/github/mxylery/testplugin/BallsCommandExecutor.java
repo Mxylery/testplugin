@@ -129,6 +129,45 @@ public class BallsCommandExecutor implements CommandExecutor {
 				
 				return true;
     			
+    		} else if (cmd.getName().equalsIgnoreCase("bobuxgive") && args.length == 1) {
+    			
+    			Player player = (Player) sender;
+				String s = args[0];
+				ItemStack stack;
+				
+				switch (s) {
+				case "berserker_helmet": stack = BobuxItems.getBersHelmet().getStack();
+				player.getInventory().addItem(stack);
+				break;
+				case "berserker_chestplate": stack = BobuxItems.getBersChestplate().getStack();
+				player.getInventory().addItem(stack);
+				break;
+				case "berserker_leggings": stack = BobuxItems.getBersLeggings().getStack();
+				player.getInventory().addItem(stack);
+				break;
+				case "berserker_boots": stack = BobuxItems.getBersBoots().getStack();
+				player.getInventory().addItem(stack);
+				break;
+				case "teleport_rod": stack = BobuxItems.getTeleportRod().getStack();
+				player.getInventory().addItem(stack);
+				break;
+				case "meteor_wand": stack = BobuxItems.getMeteorWand().getStack();
+				player.getInventory().addItem(stack);
+				break;
+				case "railgun": stack = BobuxItems.getRailgun().getStack();
+				player.getInventory().addItem(stack);
+				break;
+				case "katana": stack = BobuxItems.getKatana().getStack();
+				player.getInventory().addItem(stack);
+				break;
+				case "excavator": stack = BobuxItems.getExcavator().getStack();
+				player.getInventory().addItem(stack);
+				break;
+				default: player.getServer().broadcastMessage("Balls");
+				}
+				
+				return true;
+    			
     		} else {
     			
     			return false;

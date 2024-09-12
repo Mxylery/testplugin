@@ -15,9 +15,9 @@ import org.bukkit.util.Vector;
 import io.github.mxylery.testplugin.BobuxUtils;
 import io.github.mxylery.testplugin.blueprints.BobuxAbility;
 
-public class RailgunShootAbility extends BobuxAbility {
+public class RailgunRCAbility extends BobuxAbility {
 	
-	public RailgunShootAbility(long cooldown) {
+	public RailgunRCAbility(long cooldown) {
 		super(cooldown);
 	}
 	

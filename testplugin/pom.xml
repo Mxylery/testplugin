@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.mxylery</groupId>
   <artifactId>testplugin</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.4.3-SNAPSHOT</version>
   <build>
       <plugins>
           <plugin>
